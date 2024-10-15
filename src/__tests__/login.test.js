@@ -47,6 +47,8 @@ describe('Login API', () => {
     });
 
     // Expect the login function to throw an error
-    await expect(login('invalidEmail@example.com', 'wrongPassword')).rejects.toThrow('Unauthorized');
+    await expect(
+      login('invalidEmail@example.com', 'wrongPassword'),
+    ).rejects.toThrow('Unauthorized');
   });
 });
