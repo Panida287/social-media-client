@@ -8,6 +8,25 @@ export default [
       globals: { module: 'readonly', require: 'readonly' },
     },
   },
-  { languageOptions: { globals: globals.browser } },
+  {
+    files: ['src/__tests__/**/*.test.js'],
+    languageOptions: {
+      globals: {
+        ...globals.jest,
+        global: 'readonly',
+        describe: 'readonly',
+        it: 'readonly',
+        expect: 'readonly',
+      },
+    },
+  },
+  {
+    languageOptions: {
+      globals: globals.browser,
+    },
+  },
   pluginJs.configs.recommended,
+  {
+    ignores: ['node_modules', 'coverage', 'dist'],
+  },
 ];

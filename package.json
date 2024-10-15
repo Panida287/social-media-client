@@ -9,13 +9,16 @@
     "prepare": "husky install",
     "format": "prettier --write .",
     "lint": "eslint .",
-    "prettier-check": "prettier --check ."
+    "prettier-check": "prettier --check .",
+    "test": "jest --coverage"
   },
   "keywords": [],
   "author": "Noroff",
   "license": "ISC",
   "devDependencies": {
+    "@babel/preset-env": "^7.25.8",
     "@eslint/js": "^9.12.0",
+    "babel-jest": "^29.7.0",
     "eslint": "^9.12.0",
     "globals": "^15.11.0",
     "husky": "^8.0.0",
