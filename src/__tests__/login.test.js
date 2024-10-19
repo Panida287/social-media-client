@@ -2,7 +2,6 @@
 import { login } from '../js/api/auth/login';
 import { save } from '../js/storage/index'; // Mock this to test calls
 
-
 jest.mock('../js/storage/index', () => ({
   save: jest.fn(),
   load: jest.fn(), // Mock the 'load' function

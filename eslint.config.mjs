@@ -5,13 +5,13 @@ import eslintPluginJest from 'eslint-plugin-jest';
 export default [
   {
     files: ['**/*.js'],
-    ignores: ['tests/**', 'cypress/**', 'cypress.config.js'], 
+    ignores: ['tests/**', 'cypress/**', 'cypress.config.js'],
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
       globals: {
-        ...globals.browser, 
-        ...globals.es2021, 
+        ...globals.browser,
+        ...globals.es2021,
         global: 'readonly',
       },
     },
@@ -35,13 +35,13 @@ export default [
       'no-inline-comments': 'off',
     },
   },
-  
+
   {
     files: ['**/*.test.js'],
     ignores: [],
     languageOptions: {
       globals: {
-        ...globals.jest, 
+        ...globals.jest,
       },
     },
     plugins: {
