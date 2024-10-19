@@ -1,32 +1,55 @@
+import js from '@eslint/js';
 import globals from 'globals';
-import pluginJs from '@eslint/js';
+import eslintPluginJest from 'eslint-plugin-jest';
 
 export default [
   {
-    files: ['jest.config.js'],
+    files: ['**/*.js'],
+    ignores: ['tests/**', 'cypress/**', 'cypress.config.js'], 
     languageOptions: {
-      globals: { module: 'readonly', require: 'readonly' },
-    },
-  },
-  {
-    files: ['src/__tests__/**/*.test.js'],
-    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
       globals: {
-        ...globals.jest,
+        ...globals.browser, 
+        ...globals.es2021, 
         global: 'readonly',
-        describe: 'readonly',
-        it: 'readonly',
-        expect: 'readonly',
       },
     },
-  },
-  {
-    languageOptions: {
-      globals: globals.browser,
+    plugins: {
+      jest: eslintPluginJest,
+    },
+    rules: {
+      ...js.configs.recommended.rules,
+      eqeqeq: 'warn',
+      curly: 'error',
+      'no-console': 'warn',
+      'no-unused-vars': 'warn',
+      'no-var': 'error',
+      'prefer-const': 'error',
+      'no-const-assign': 'error',
+      'no-debugger': 'warn',
+      'no-lonely-if': 'error',
+      'no-nested-ternary': 'error',
+      'no-unreachable': 'error',
+      'spaced-comment': ['error', 'always'],
+      'no-inline-comments': 'off',
     },
   },
-  pluginJs.configs.recommended,
+  
   {
-    ignores: ['node_modules', 'coverage', 'dist'],
+    files: ['**/*.test.js'],
+    ignores: [],
+    languageOptions: {
+      globals: {
+        ...globals.jest, 
+      },
+    },
+    plugins: {
+      jest: eslintPluginJest,
+    },
+    rules: {
+      ...eslintPluginJest.configs.recommended.rules,
+      'jest/prefer-expect-assertions': 'off',
+    },
   },
 ];
